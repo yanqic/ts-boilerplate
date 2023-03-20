@@ -1,11 +1,11 @@
 import { Configuration, OpenAIApi } from "openai";
-import { env } from "process";
-
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 const fineTunedModel = 'curie:ft-dev-2023-03-17-08-29-16'; // curie
 
 const configuration = new Configuration({
-    apiKey: env.OPENAI_API_KEY,
+    apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 

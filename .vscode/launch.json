@@ -11,6 +11,15 @@
             "internalConsoleOptions": "neverOpen"
         },
         {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug Current",
+            "runtimeArgs": ["-r", "ts-node/register"],
+            "args": ["${relativeFile}"],
+            "cwd": "${workspaceFolder}",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
             "name": "Jest Current File",
             "type": "node",
             "request": "launch",
