@@ -1,6 +1,6 @@
-import { sayHello } from './hello-world';
+import { loadNlp } from './nlp/nlp';
 
 (async (): Promise<void> => {
-    console.info(sayHello());
+    await loadNlp();
     process.exit();
 })();

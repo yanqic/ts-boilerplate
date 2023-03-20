@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "ts-node src/index",
-        "build": "tsc",
+        "build": "rm -rf dist && tsc --build tsconfig.json ./",
         "lint": "eslint --ignore-path .eslintignore . --ext .ts",
         "test": "APP_ENV=test jest  --runInBand --detectOpenHandles"
     },
