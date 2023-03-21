@@ -1,6 +1,6 @@
 import { NlpManager } from 'node-nlp'
 
-const manager = new NlpManager({ languages: ['zh'], forceNER: true, modelFileName: './model.nlp' });
+const manager = new NlpManager({ languages: ['zh'], forceNER: true,autoSave:false });
 
 const documents: Array<{ prompt: string, completion?: string; intent: string}> = [
     {
@@ -152,7 +152,7 @@ const testCase = [
 
 export async function loadNlp() {
     await manager.train();
-    manager.save();
+    // manager.save(path.join(__dirname,'./model.nlp'),true);
     testCase.map(async (text, index) => {
         const result = await manager.process('zh', text);
         console.log(index, result.classifications, result.answer);
