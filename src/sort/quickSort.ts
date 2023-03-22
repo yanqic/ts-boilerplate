@@ -1,6 +1,6 @@
 /**
  *
- * @param arr 
+ * @param arr
  * @returns
  */
 export function quickSort(arr: number[]): number[] {

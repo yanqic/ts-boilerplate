@@ -4,8 +4,9 @@
         "source.fixAll.eslint": true,
         "source.addMissingImports": true
     },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "typescript.tsdk": "node_modules/typescript/lib",
-    "cSpell.words": [
-        "OPENAI"
-    ]
+    "cSpell.words": ["dureader", "OPENAI"]
 }

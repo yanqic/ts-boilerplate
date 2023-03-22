@@ -4,7 +4,7 @@
 
 function getLongestStr(str: string) {
     let prePtr = 0;
-    let maxStrIndex = [0,0];
+    let maxStrIndex = [0, 0];
     for (let i = 0; i < str.length; i++) {
         const char = str[i];
         const subStr = str.slice(prePtr, i);
@@ -12,14 +12,14 @@ function getLongestStr(str: string) {
         if (index === -1) {
             continue;
         } else {
-            prePtr = index
-            if ((i - prePtr) > (maxStrIndex[1] - maxStrIndex[0])) {
-                maxStrIndex= [prePtr, i]
+            prePtr = index;
+            if (i - prePtr > maxStrIndex[1] - maxStrIndex[0]) {
+                maxStrIndex = [prePtr, i];
             }
             prePtr++;
         }
     }
-    return str.slice(maxStrIndex[0], maxStrIndex[1])
+    return str.slice(maxStrIndex[0], maxStrIndex[1]);
 }
 
 export default getLongestStr;

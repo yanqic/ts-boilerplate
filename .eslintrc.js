@@ -1,7 +1,11 @@
 module.exports = {
+    root: true,
     parser: '@typescript-eslint/parser',
     plugins: ['@typescript-eslint/eslint-plugin'],
-    extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended','plugin:@typescript-eslint/recommended-requiring-type-checking'],
+    extends: [
+        'plugin:@typescript-eslint/recommended',
+        'plugin:prettier/recommended'
+    ],
     env: {
         node: true,
         jest: true
@@ -12,5 +16,11 @@ module.exports = {
         ecmaFeatures: {
             modules: true
         }
+    },
+    rules: {
+        'prettier/prettier': [
+            'error',
+            { singleQuote: true, trailingComma: 'none', parse: 'flow' }
+        ]
     }
 };
