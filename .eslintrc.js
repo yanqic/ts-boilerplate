@@ -18,9 +18,6 @@ module.exports = {
         }
     },
     rules: {
-        'prettier/prettier': [
-            'error',
-            { singleQuote: true, trailingComma: 'none', parse: 'flow' }
-        ]
+        'prettier/prettier': 'error'
     }
 };

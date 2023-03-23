@@ -182,6 +182,17 @@ function loadBaseDatasets() {
     }
 }
 
+export async function tokenize(text: string) {
+    // 获取英文的分词器和词干提取器
+    const tokenizer = manager.container.get('tokenizer-zh');
+    const stemmer = manager.container.get('stemmer-zh');
+
+    // 对一段文本进行分词和词干提取
+    const tokens: string[] = tokenizer.tokenize(text);
+    const stems = await Promise.all(tokens.map((token) => stemmer.stem(token)));
+    console.log('tokens:', tokens, '\n stems:', stems);
+}
+
 export async function trainNlp(srcFileName: string, minified: boolean) {
     loadCustomDocs();
     // loadBaseDatasets();
@@ -198,7 +209,8 @@ export async function loadNlp(srcFileName: string) {
         // '用户组是什么',
         // '工单的状态有哪几种',
         // '如何在飞书添加创建入口',
-        '你个老六'
+        '无法手动删除post',
+        '南京市长江大桥'
     ];
 
     for (const item of testCases) {
@@ -207,4 +219,4 @@ export async function loadNlp(srcFileName: string) {
     }
 }
 
-// trainNlp();
+// tokenize('南京市长江大桥来了');

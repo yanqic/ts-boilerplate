@@ -1,5 +1,6 @@
 declare module 'node-nlp' {
     class NlpManager {
+        container: any;
         constructor(settings: {
             languages: string[];
             forceNER: boolean;
