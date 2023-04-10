@@ -1816,6 +1816,11 @@ convert-source-map@^2.0.0:
   resolved "https://registry.npmmirror.com/convert-source-map/-/convert-source-map-2.0.0.tgz#4b560f649fc4e918dd0ab75cf4961e8bc882d82a"
   integrity sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==
 
+cosim@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmmirror.com/cosim/-/cosim-1.0.4.tgz#c40812a52b88487a20d39f8b14393bf857c87b3f"
+  integrity sha512-qiOma7+HOXV1B9EqSJv6/Z/RQXfVO4z4uxWr8je2+ddmf+BOW/M1p5i6C8Dux6biMFMEsalt7FQKgzZlNnjQ/w==
+
 crc-32@~1.2.0, crc-32@~1.2.1:
   version "1.2.2"
   resolved "https://registry.npmmirror.com/crc-32/-/crc-32-1.2.2.tgz#3cad35a934b8bf71f25ca524b6da51fb7eace2ff"

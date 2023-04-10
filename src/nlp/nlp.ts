@@ -16,13 +16,12 @@ function loadCustomDocs() {
     }> = [
         {
             prompt: '【优化建议】讨论区feed流卡片正文字号太小',
-            completion:
-                '可以用主流的全面屏安卓机实际看下，字号小到阅读已经不适了，而且非常密 麻烦看下这个需求',
+            completion: '可以用主流的全面屏安卓机实际看下，字号小到阅读已经不适了，而且非常密 麻烦看下这个需求',
             intent: 'question'
         },
         {
             prompt: '【bug】IPO申购流程中费用详情部分字体异常 申购流程中费用详情部分字段字号异常，比其他字号要小；申购股数数字未添加千分位逗号显示，其他字段均有添加，请统一前端计数显示方法；TigerTrade安卓81111，香港已入金客户 ',
-            completion: '工单已解决，处理结果：8121版本已解决此问题 ',
+            completion: '这个答案很奇怪',
             intent: 'question'
         },
         {
@@ -43,27 +42,24 @@ function loadCustomDocs() {
             intent: 'question'
         },
         {
-            prompt: ' 客户表示，沪深港通的A股持仓展示在了美股持仓中，只有APP展示有问题，重新卸载登陆也不行，PC端正常，烦请协助查看，谢谢！',
+            prompt: '客户表示，沪深港通的A股持仓展示在了美股持仓中，只有APP展示有问题，重新卸载登陆也不行，PC端正常，烦请协助查看，谢谢！',
             completion:
                 ' 已当面确认，是交易接口存在问题，市场判断错误导致的。此问题是历史问题，非近期版本导致的。已修复 812上线',
             intent: 'question'
         },
         {
             prompt: ' 客户在交易页面又查看不到买卖盘口数据了 客户在一月的时候登陆APP后无法查看港股买卖盘口行情，也不显示买卖10档，后面经过处理好了，但目前客户再次反馈又出现了相同的问题，买卖10档又不显示，客户进线还显示地区是美国，但是客户是在国内的，也没有用vpn，辛苦帮忙再看一下，谢谢',
-            completion:
-                ' ip 数据库不准确，添加白名单修正。后续调研ip数据库更新是否可以解决该问题。',
+            completion: ' ip 数据库不准确，添加白名单修正。后续调研ip数据库更新是否可以解决该问题。',
             intent: 'question'
         },
         {
             prompt: '客户换汇提示无法交易 ',
-            completion:
-                '客户未通过个人信息校验因此没有交易权限，已通知客户去app操作，工单已解决。 ',
+            completion: '客户未通过个人信息校验因此没有交易权限，已通知客户去app操作，工单已解决。 ',
             intent: 'question'
         },
         {
             prompt: '客户MAC电脑端软件无法调整大小，烦请查看视频 版本8.4.1，鼠标放在框的四个角上还是一样的，烦请协助查看，谢谢！',
-            completion:
-                ' 看用户视频操作的是自选组件，多数组件都定义了可调整的最大宽度，用户应该是已经调整到最大宽度了',
+            completion: ' 看用户视频操作的是自选组件，多数组件都定义了可调整的最大宽度，用户应该是已经调整到最大宽度了',
             intent: 'question'
         },
         {
@@ -74,12 +70,11 @@ function loadCustomDocs() {
         },
         {
             prompt: ' 客户在软件无法查看到港股的卖空参考利率，在APP和PC都无法查看到，卸载再次安装切换网络都已经尝试，请帮忙核实确认，谢谢（如果是由于客户港股底层是TBHK，不支持做空的原因，是不是也应该把做空保证金也去掉',
-            completion:
-                ' 看了一下服务端代码，目前确实没有根据上手判断是否能做空逻辑，应该是需要加一下',
+            completion: ' 看了一下服务端代码，目前确实没有根据上手判断是否能做空逻辑，应该是需要加一下',
             intent: 'question'
         },
         {
-            prompt: '我什么时候应当关闭工单？ ',
+            prompt: '我什么时候应当关闭工单？',
             completion:
                 '1. 当工单所涉及的问题已经处理结束或者得出共识结论时，就可以关闭工单了\n2. 如果该问题的处理需要更多时间，可以适当调整截止时间，并继续跟进工单问题处理\n3. 如果该问题需要排期解决，或者延迟版本跟进，可以将该问题记录到Jira或者Asana上，然后将相关链接贴到工单详情中，就可以关闭工单了 ',
             intent: 'question'
@@ -104,8 +99,7 @@ function loadCustomDocs() {
         },
         {
             prompt: '通知到群是怎么回事？',
-            completion:
-                '您可以选择将工单同步到一些群会话中，当工单状态变更时将会自动发送消息到群组中，方便群中人员信息共享 ',
+            completion: '和群里面所有人同步',
             intent: 'question'
         },
         {
@@ -171,9 +165,7 @@ function loadBaseDatasets() {
                 // 获取问题文本作为文档
                 const question = qas.question;
                 // 获取答案文本作为回复，如果是不可回答的问题，则回复'No answer'
-                const answer = qas.is_impossible
-                    ? 'No answer'
-                    : qas.answers[0].text;
+                const answer = qas.is_impossible ? 'No answer' : qas.answers[0].text;
                 // 将文档和回复添加到NLP管理器对象中，指定域名为'squad'
                 manager.addDocument('zh', question, qas.id);
                 manager.addAnswer('zh', qas.id, answer);
@@ -186,6 +178,9 @@ export async function tokenize(text: string) {
     // 获取英文的分词器和词干提取器
     const tokenizer = manager.container.get('tokenizer-zh');
     const stemmer = manager.container.get('stemmer-zh');
+    // const stopWords = manager.container.get('stopwords-zh');
+    // console.log('stopWord', stopWords);
+    // stopWords.push('怎么样');
 
     // 对一段文本进行分词和词干提取
     const tokens: string[] = tokenizer.tokenize(text);
@@ -209,8 +204,9 @@ export async function loadNlp(srcFileName: string) {
         // '用户组是什么',
         // '工单的状态有哪几种',
         // '如何在飞书添加创建入口',
-        '无法手动删除post',
-        '南京市长江大桥'
+        // '无法手动删除post',
+        // '南京市长江大桥',
+        '今天天气'
     ];
 
     for (const item of testCases) {
@@ -219,4 +215,4 @@ export async function loadNlp(srcFileName: string) {
     }
 }
 
-// tokenize('南京市长江大桥来了');
+tokenize('今天天气怎么样');

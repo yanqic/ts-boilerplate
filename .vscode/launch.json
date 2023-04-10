@@ -14,6 +14,7 @@
             "type": "node",
             "request": "launch",
             "name": "Debug Current",
+            "envFile": "${workspaceFolder}/.env",
             "runtimeArgs": ["-r", "ts-node/register"],
             "args": ["${relativeFile}"],
             "cwd": "${workspaceFolder}",
