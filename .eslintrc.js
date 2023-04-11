@@ -2,10 +2,7 @@ module.exports = {
     root: true,
     parser: '@typescript-eslint/parser',
     plugins: ['@typescript-eslint/eslint-plugin'],
-    extends: [
-        'plugin:@typescript-eslint/recommended',
-        'plugin:prettier/recommended'
-    ],
+    extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
     env: {
         node: true,
         jest: true
@@ -18,6 +15,7 @@ module.exports = {
         }
     },
     rules: {
-        'prettier/prettier': 'error'
+        'prettier/prettier': 'error',
+        '@typescript-eslint/no-non-null-assertion': 'off'
     }
 };
