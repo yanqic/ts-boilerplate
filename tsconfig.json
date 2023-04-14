@@ -9,6 +9,7 @@
         "lib": ["esnext","DOM"],
         "outDir": "dist",
         "esModuleInterop": true,
+        "experimentalDecorators": true,
         "allowSyntheticDefaultImports": true,
         "isolatedModules": true,
         "resolveJsonModule": true,
