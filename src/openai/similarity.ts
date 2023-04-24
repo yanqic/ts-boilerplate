@@ -2,8 +2,6 @@ import { Configuration, OpenAIApi } from 'openai';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-// const fineTunedModel = 'curie:ft-dev-2023-03-17-08-29-16'; // curie
-
 const configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
     basePath: process.env.OPENAI_BASE_PATH
@@ -11,7 +9,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 async function main() {
-    const docs: string[] = ['The cat sat on the mat.', 'I like to eat pizza for dinner'];
+    const docs: string[] = ['你是谁，有什么功能', '我希望能添加一些分类和项目'];
     const results = await Promise.all(
         docs.map((doc) =>
             openai.createEmbedding({ model: 'text-embedding-ada-002', input: doc }).catch((e) => {
